@@ -40,7 +40,7 @@
 	<!-- Settings for the ports to bind -->
 	<Bind>
 		<!-- Enable this configuration if you want to use API Server -->
-		<!--
+		
 		<Managers>
 			<API>
 				<Port>8081</Port>
@@ -48,7 +48,7 @@
 				<WorkerCount>1</WorkerCount>
 			</API>
 		</Managers>
-		-->
+		
 
 		<Providers>
 			<!-- Pull providers -->
@@ -156,7 +156,7 @@
 		<AccessToken> is a token for authentication, and when you invoke the API, you must put "Basic base64encode(<AccessToken>)" in the "Authorization" header of HTTP request.
 		For example, if you set <AccessToken> to "ome-access-token", you must set "Basic b21lLWFjY2Vzcy10b2tlbg==" in the "Authorization" header.
 	-->
-	<!--
+	
 	<Managers>
 		<Host>
 			<Names>
@@ -178,7 +178,7 @@
 			</CrossDomains>
 		</API>
 	</Managers>
-	-->
+	
 
 	<!--
 		Refer https://airensoft.gitbook.io/ovenmediaengine/alert
