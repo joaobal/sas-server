@@ -12,9 +12,10 @@ Uses the [OvenMediaEngine](https://github.com/AirenSoft/OvenMediaEngine) to hand
   - [Installation](#installation)
   - [How to use](#how-to-use)
   - [Deploy](#deploy)
-- [Development](#development)
-  - [Tests](#tests)
-  - [Branching](#branching)
+  - [Development](#development)
+    - [Debugging](#debugging)
+    - [Tests](#tests)
+    - [Branching](#branching)
 
 ---
 
@@ -47,7 +48,9 @@ docker compose up -d --build
 
 ## Development
 
-### Debugging OvenMediaServer
+### Debugging
+
+#### OME API
 
 Configure the message authorization according to the AccessToken in OME's server.xml config.
 For example:
@@ -56,18 +59,27 @@ For example:
 - key to add to msg header "Basic b21lLWFjY2Vzcy10b2tlbg=="
 - for ex in postman it should be:
 
-![Postman Example](assets/ome-api-postman.png)
+<p align="center">
+  <img src="assets/ome-api-postman.png" alt="Postman Example">
+</p>
 
 To get all incoming streams - sent by encoder to OME:
 ```
 http://localhost:8081/v1/vhosts/default/apps/app/streams
 ```
 
+To get information about stream "stream" being received by OME:
+```
+http://localhost:8081/v1/vhosts/default/apps/app/streams/stream
+```
+
+For more information see 
+
 ### Tests
 
 ### Branching
 
-GitFlow:
+This repository uses basic GitFlow:
 
 - master: This branch always reflects a production-ready state. Only release-ready code is merged here.
 - dev: This is the primary development branch where all completed features are merged. It represents the latest delivered development changes for the next release.
