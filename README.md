@@ -1,7 +1,7 @@
 # Stream Server Analysis (S.A.S.) - Backend
 
+Backend of [SAS](https://github.com/joaobal/stream-server-analysis).
 Uses the [OvenMediaEngine](https://github.com/AirenSoft/OvenMediaEngine) to handle incoming live RTSP Feeds and relay them to users which can watch them using [SAS-Client](https://github.com/joaobal/sas-client). 
-Project overview: [SAS](https://github.com/joaobal/stream-server-analysis)
 
 ## Contents
 
@@ -23,6 +23,21 @@ Project overview: [SAS](https://github.com/joaobal/stream-server-analysis)
 SAS-Server is a media server which also processes/analyses the stream according to requests sent by the user.
 
 ## Install
+
+1. Make sure you have at least 2.5GB available on your system
+
+2. Make sure docker compose is installed:
+```
+$ docker compose version
+Docker Compose version v2.15.1
+```
+
+3. Clone sas-server
+
+4. Build with docker compose:
+```
+docker compose up -d --build
+```
 
 ## How to use
 
