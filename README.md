@@ -1,27 +1,28 @@
 # Stream Server Analysis (S.A.S.) - Backend
 
-Backend of [SAS](https://github.com/joaobal/stream-server-analysis).
-Uses the [OvenMediaEngine](https://github.com/AirenSoft/OvenMediaEngine) to handle incoming live RTSP Feeds and relay them to users which can watch them using [SAS-Client](https://github.com/joaobal/sas-client). 
+[SAS](https://github.com/joaobal/stream-server-analysis) backend, to be run in a server in the same local network as the cameras.
 
 ## Contents
 
-- [SAS-Server](#stream-server-analysis-sas-backend)
-  - [Contents](#contents)
-  - [Description](#description)
-  - [Requirements](#requirements)
-  - [Installation](#installation)
-  - [How to use](#how-to-use)
-  - [Deploy](#deploy)
-  - [Development](#development)
-    - [Debugging](#debugging)
-    - [Tests](#tests)
-    - [Branching](#branching)
+- [Contents](#contents)
+- [Description](#description)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [How to use](#how-to-use)
+- [Deploy](#deploy)
+- [Development](#development)
+  - [Debugging](#debugging)
+    - [OME API](#ome-api)
+  - [Tests](#tests)
+  - [Branching](#branching)
 
 ---
 
 ## Description
 
 SAS-Server is a media server which also processes/analyses the stream according to requests sent by the user.
+
+Uses the [OvenMediaEngine](https://github.com/AirenSoft/OvenMediaEngine) to handle incoming live RTSP/RTMP/WebRTC streams and relay them to users which can watch them using [SAS-Client](https://github.com/joaobal/sas-client). 
 
 ## Install
 
