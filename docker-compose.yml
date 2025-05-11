@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  ovenmediaengine:
+    image: airensoft/ovenmediaengine:latest
+    container_name: ome
+    ports:
+      - "1935:1935"      # RTMP
+      - "9999:9999/udp"  # WebRTC over UDP (deprecated, but often still included)
+      - "9000:9000"      # WebRTC over TCP (Signalling)
+      - "3333:3333"      # LLHLS/DASH WebRTC (Signalling for OvenPlayer)
+      - "3478:3478"      # STUN/TURN
+      - "3478:3478/udp"  # STUN/TURN UDP
+      - "10000-10009:10000-10009/udp" # WebRTC ICE Candidates (RTP/RTCP)
+    environment:
+      # IMPORTANT: You need to set this to your host's actual IP address
+      # that clients will use to connect to OME.
+      # For local development, this is your machine's LAN IP.
+      # For a server, this is its public IP.
+      - OME_HOST_IP
+    volumes:
+      - ./ome/config:/opt/ovenmediaengine/bin/origin_conf
+      - ./ome/logs:/var/log/ovenmediaengine
+      # See https://docs.ovenmediaengine.com/getting-started/getting-started-with-docker#getting-started-with-complex-configuration
+      # - /cert...:/opt/ovenmediaengine/bin/origin_conf/cert.crt
+      # - /key...:/opt/ovenmediaengine/bin/origin_conf/cert.key
+      # - /cert.ca-bundle...:/opt/ovenmediaengine/bin/origin_conf/cert.ca-bundle
+    restart: unless-stopped
+    networks:
+     - sas_network
+
+  # If your sas-server is also a Docker container, you'd define it here too:
+  sas_server:
+    build: . # Dockerfile in the root of the repo
+    container_name: sas_server
+    ports:
+      - "8000:8000" # ex port
+    depends_on:
+      - ovenmediaengine # sas-server needs OME to be running first
+    environment:
+      - OME_API_ENDPOINT=http://ovenmediaengine:8080 # so that sas-server can talk to OME API
+    networks:
+     - sas_network
+
+networks:
+  sas_network:
+    driver: bridge
