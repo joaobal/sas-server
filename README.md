@@ -47,6 +47,22 @@ docker compose up -d --build
 
 ## Development
 
+### Debugging OvenMediaServer
+
+Configure the message authorization according to the AccessToken in OME's server.xml config.
+For example:
+- OME's default API AccessToken: "ome-access-token"
+- Apply base64 encoding to "ome-access-token": b21lLWFjY2Vzcy10b2tlbg==
+- key to add to msg header "Basic b21lLWFjY2Vzcy10b2tlbg=="
+- for ex in postman it should be:
+
+![Postman Example](assets/ome-api-postman.png)
+
+To get all incoming streams - sent by encoder to OME:
+```
+http://localhost:8081/v1/vhosts/default/apps/app/streams
+```
+
 ### Tests
 
 ### Branching
